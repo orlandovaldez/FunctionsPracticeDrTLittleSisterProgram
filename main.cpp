@@ -1,7 +1,7 @@
 /*Folder: Little_Sister_YourLastName
 CPP: Function_Practice_Little_Sister.cpp
 Teacher: Dr. Tyson McMillan, 9-1-2019
-Student: TYPE_YOUR_NAME_HERE
+Student: Orlando Valdez
 
 Description: Dr_T's little sister is smart.
 She uses a divide and concur method to get $20 from the parents.
@@ -14,25 +14,33 @@ function prototypes, function definition, and functions calls to make the progra
 This completed work shall be uploaded to Extra Credit item 15: Little_Sister_YourLastName.zip
 */
 #include<iostream>
+#include <iomanip> // for setting decimal precision
 using namespace std;
 
 //$_earned       mom  dad
 double MakeBank(bool,bool); //function prototype
 void welcomeMessage();
 void dayOfTheWeek(int);
+double numberCube(double);
 
 int main()
 {  
+    
     int dayInput = 0; //accept day input from the user
-    welcomeMessage();
-    //function calls (true = "yes", false="no"
-    cout << "\nLittle Sister Function calls: ";
-    cout << "\nOption 1, Little Sister Earns: $" << MakeBank(true,false);
-    cout << "\nOption 2, Little Sister Earns: $" << MakeBank(false,true);
-    cout << "\nOption 3, Little Sister Earns: $" << MakeBank(true,true);
-    cout << "\nOption 4, Little Sister Earns: $" <<  MakeBank(false,false);
+    double numInput =0.0; //acceptng the input for the cube of number
+    char exit = '\0';
 
-    /*Programming Challenges
+    do
+    {
+      welcomeMessage();
+      //function calls (true = "yes", false="no"
+      cout << "\nLittle Sister Function calls: ";
+      cout << "\nOption 1, Little Sister Earns: $" << MakeBank(true,false);
+      cout << "\nOption 2, Little Sister Earns: $" << MakeBank(false,true);
+      cout << "\nOption 3, Little Sister Earns: $" << MakeBank(true,true);
+      cout << "\nOption 4, Little Sister Earns: $" <<  MakeBank(false,false);
+
+      /*Programming Challenges
       1. Extend this program to output how much Little Sister earns in each scenario.
       2. Create a void welcomeMessage(); function to show a nice greeting on screen to the program.
       3. Extend this program to write a void dayOfTheWeek(int); function given user input of the number (1 output Sunday);
@@ -41,10 +49,25 @@ int main()
       6. Extend this program set the precision of the numberCube result to 4 decimal places
       7. Loop the program until exit conditions 'E' AND 'e', clear the screen upon each loop #include<cstdlib> system("cls");
     */
-    cout << "Please enter a day of the week (1-7): ";
-    cin >> dayInput; //accept input of day
-    dayOfTheWeek(dayInput); //pass argument provided by user 
+    
+    
+      cout << "Please enter a day of the week (1-7): ";
+      cin >> dayInput; //accept input of day
+      dayOfTheWeek(dayInput); //pass argument provided by user 
+
+      cout << fixed << setprecision(4); // results with 4 decimal places
+      cout << "\nPlease Enter A Number And I Shall Cube It: " << endl;
+      cin >> numInput;
+      cout << "The cube of the number " << numInput << " is " << numberCube(numInput);
+
+      cout << "\nRun again? (E or e to exit): ";
+      cin >> exit;
+
+    }
+    while (exit != 'E' && exit != 'e');
+    cout << "\nAdios, thanks for playing...";
     return 0;
+    
 }
 
 double MakeBank(bool mom, bool dad)
@@ -87,7 +110,7 @@ void dayOfTheWeek(int day)
   
   if(day == 1)
   {
-    cout << "\x1b[34;1mIt's Tuesday!!!!\x1b[0m\n";
+    cout << "\x1b[34;1mIt's Sunday!!!!\x1b[0m\n";
   }
   else if (day == 2)
   {
@@ -116,4 +139,10 @@ void dayOfTheWeek(int day)
     cout << "\x1b[41;1mIt's Saturday!!!!\x1b[0m\n";
   }
 
+
+}
+
+double numberCube(double num)
+{
+  return(num * num * num);
 }
